@@ -1,6 +1,6 @@
 from typing import List;
 
-fileName = './Day1/Part1/input.txt';
+fileName = './Day1/input.txt';
 
 def parseFileIntoArray(fileName) -> List[int]:
   # reads into an array
