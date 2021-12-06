@@ -13,7 +13,7 @@ def parseFileIntoArray(fileName) -> List[int]:
 
   return sanitizedLines;
 
-def getLanternfish(currSchool: List[int], nDays: int) -> int:
+def getLanternfish(currSchool: List[int], nDays: int) -> List[int]:
   if nDays == 0:
     return currSchool;
   else:
