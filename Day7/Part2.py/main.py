@@ -14,21 +14,19 @@ def parseFileIntoArray(fileName) -> List[int]:
 
   return sanitizedLines;
 
-def getMedian(inputs: List[int]) -> List[int]:
+def getMean(inputs: List[int]) -> List[int]:
   nLen = len(inputs);
-  sortedInputs = sorted(inputs);
+  inputSum = 0;
 
-  medianPosition = nLen/2;
+  for input in inputs:
+    inputSum += input;
+  
+  mean = inputSum/nLen;
 
-  if medianPosition.is_integer():
-    return [sortedInputs[int(medianPosition)]];
-  else:
-    medianLeftPosition = int(math.floor(medianPosition));
-    medianRightPosition = int(math.ceil(medianPosition));
-    medianLeft = sortedInputs[medianLeftPosition];
-    medianRight = sortedInputs[medianRightPosition];
+  return [int(math.floor(mean)), int(math.ceil(mean))];
 
-    return [medianLeft, medianRight];
+def calculateTriangularNumber(n: int) -> int:
+  return int((pow(n, 2) + n)/2);
 
 def getFuel(inputs: List[int], positions: List[int]) -> int:
   leastFuelConsumed = -1;
@@ -37,17 +35,17 @@ def getFuel(inputs: List[int], positions: List[int]) -> int:
     fuelConsumed = 0;
 
     for input in inputs:
-      fuelConsumed += abs(input - position);
-    
+      fuelConsumed += calculateTriangularNumber(abs(input - position));
+  
     if leastFuelConsumed == -1 or fuelConsumed < leastFuelConsumed:
       leastFuelConsumed = fuelConsumed;
-    
-  return fuelConsumed;
+  
+  return leastFuelConsumed;
 
 def main():
   # inputs = [16, 1, 2, 0, 4, 2, 7, 1, 2, 14];
   inputs = parseFileIntoArray(fileName);
-  positions = getMedian(inputs);
+  positions = getMean(inputs);
   fuelConsumed = getFuel(inputs, positions);
   print(f'{positions=}');
   print(f'{fuelConsumed=}');
