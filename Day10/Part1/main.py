@@ -70,7 +70,7 @@ def getInvalidInfo(line: str) -> InvalidInfo | None:
   if len(unmatchedChars) == 0:
     return None;
   else:
-    return InvalidInfo(InvalidType.IS_INCOMPLETE, char, line);
+    return InvalidInfo(InvalidType.IS_INCOMPLETE, '', line);
 
 def sortLines(inputs: List[str]) -> Lines:
   corruptedLines = [];
